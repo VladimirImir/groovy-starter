@@ -10,8 +10,10 @@ class OopRunner {
         println student.'firstName'
         println student.@firstName // not recommended
 
-        def student1 = new Student(firstName: "Petr", lastName: "Petrov", age: 18)
+        def student1 = new Student(firstName: "Petr", lastName: "Petrov", age: 18, id: 222)
         println student1
+
+        student1.properties.each { println it}
 
         Student student2 = ['Sveta', 'Svetikova', 30]
         println student2
