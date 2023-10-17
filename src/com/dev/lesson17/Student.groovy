@@ -25,10 +25,15 @@ class Student implements WithId {
         index == 0 ? firstName : lastName
     }
 
-    static void main(String[] args) {
-        /*Student.builder()
-                .firstName("Ivan")
-                .lastName("Ivanov")
-                .build()*/
+    def methodMissing(String name, Object arguments) {
+        println "missing method $name is invoked: $arguments"
+        def field = name - 'findBy'
+        def fieldValue = this."$field"
+        println "select * from Student where $field = $fieldValue"
+    }
+
+    def property(String name) {
+        println "missing property $name"
+        "default value"
     }
 }
